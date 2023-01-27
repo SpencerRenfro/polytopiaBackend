@@ -1,5 +1,8 @@
 'use strict';
 
+// query
+const cors = require('cors');
+
 const express = require('express');
 const morgan = require('morgan');
 const routes = require('./routes');
@@ -12,6 +15,11 @@ app.use(express.json());
 
 // Setup morgan which gives us HTTP request logging.
 app.use(morgan('dev'));
+
+// query
+app.use(cors({
+  origin: '*',
+})); 
 
 // Setup a friendly greeting for the root route.
 app.get('/', (req, res) => {
